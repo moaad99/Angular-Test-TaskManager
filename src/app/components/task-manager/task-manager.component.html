@@ -1,0 +1,21 @@
+<form [formGroup]="taskForm">
+  <div class="addTask">
+    <input   formControlName="task" type="text" />
+    <button (click)="AddTask()">Nouvelle Tâche</button>
+  </div>
+</form>
+<ul *ngFor="let task of Tasks">
+  <li>
+    <input type="checkbox" [(ngModel)]="task.done" />
+    {{ task.name }}
+    <button (click)="deleteTask(task)">Supprimer</button>
+  </li>
+</ul>
+
+<h1>Taches Terminés</h1>
+
+<ul *ngFor="let task of Tasks">
+  <li *ngIf="task.done == true">
+    {{ task.name }}
+  </li>
+</ul>
